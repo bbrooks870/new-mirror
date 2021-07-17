@@ -13,6 +13,7 @@ from telegram import ParseMode
 
 from urllib.parse import quote as urlencode, urlsplit
 
+from bot.helper.telegram_helper.bot_commands import BotCommands
 from pyrogram import Client, filters, emoji
 from pyrogram.parser import html as pyrogram_html
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -35,13 +36,13 @@ async def return_search(query, page=1, sukebei=False):
         if (time.time() - get_time) > 3600:
             results = []
             async with aiohttp.ClientSession() as session:
-                async with session.get(f'https://{"sukebei." if sukebei else ""}nyaa.si/?page=rss&q={urlencode(query)}') as resp:
+                async with session.get(f'https://{"sukebei." if sukebei else ""}meowinjapanese.cf/?page=rss&q={urlencode(query)}') as resp:
                     d = feedparser.parse(await resp.text())
             text = ''
             a = 0
             parser = pyrogram_html.HTML(None)
             for i in sorted(d['entries'], key=lambda i: int(i['nyaa_seeders']), reverse=True):
-                if i['nyaa_size'].startswith('0'):
+                if i['meowinjapanese.cfze'].startswith('0'):
                     continue
                 if not int(i['nyaa_seeders']):
                     break
@@ -51,12 +52,14 @@ async def return_search(query, page=1, sukebei=False):
                     link = f'<code>{link}</code>'
                 newtext = f'''<b>{a + 1}.</b> <code>{html.escape(i["title"])}</code>
 <b>Link:</b> <code>{link}</code>
-<b>Size:</b> <code>{i["nyaa_size"]}</code>
+<b>Size:</b> <code>{i["meowinjapanese.cfze"]}</code>
 <b>Seeders:</b> <code>{i["nyaa_seeders"]}</code>
 <b>Leechers:</b> <code>{i["nyaa_leechers"]}</code>
-<b>Category:</b> <code>{i["nyaa_category"]}</code>\n\n'''
+<b>Category:</b> <code>{i["nyaa_category"]}</code>
+<b>Mir:</b> <code>{link} {BotCommands.MirrorCommand}</code>
+<b>ZipDL:</b> <code>{link} {BotCommands.TarMirrorCommand}</code>\n\n'''
                 futtext = text + newtext
-                if (a and not a % 10) or len((await parser.parse(futtext))['message']) > 4096:
+                if (a and not a % 5) or len((await parser.parse(futtext))['message']) > 4096:
                     results.append(text)
                     futtext = newtext
                 text = futtext
