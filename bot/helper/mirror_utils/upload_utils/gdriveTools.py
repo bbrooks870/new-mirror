@@ -18,7 +18,7 @@ from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 from tenacity import *
 
-from bot import GD_BUTTON, INDEX_BUTTON, VIEW_BUTTON, TITLE_NAME, AUTHOR_NAME, AUTHOR_URL, GD_INFO, TELEGRAPH_INDEX, TELEGRAPH_DRIVE
+from bot import GD_BUTTON, INDEX_BUTTON, VIEW_BUTTON, TITLE_NAME, AUTHOR_NAME, AUTHOR_URL, GD_INFO, TELEGRAPH_INDEX, TELEGRAPH_DRIVE, SEARCH_VIEW_BUTTON
 from telegram import InlineKeyboardMarkup
 from bot.helper.telegram_helper import button_build
 from telegraph import Telegraph

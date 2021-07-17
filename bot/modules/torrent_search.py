@@ -56,8 +56,8 @@ async def return_search(query, page=1, sukebei=False):
 <b>Seeders:</b> <code>{i["nyaa_seeders"]}</code>
 <b>Leechers:</b> <code>{i["nyaa_leechers"]}</code>
 <b>Category:</b> <code>{i["nyaa_category"]}</code>
-<b>Mir:</b> <code>{link} {BotCommands.MirrorCommand}</code>
-<b>ZipDL:</b> <code>{link} {BotCommands.TarMirrorCommand}</code>\n\n'''
+<b>Mir:</b> <code>/{BotCommands.MirrorCommand} {link}</code>
+<b>ZipDL:</b> <code>/{BotCommands.TarMirrorCommand} {link}</code>\n\n'''
                 futtext = text + newtext
                 if (a and not a % 5) or len((await parser.parse(futtext))['message']) > 4096:
                     results.append(text)
