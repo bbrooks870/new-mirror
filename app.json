@@ -1,15 +1,15 @@
 {
-    "name": "slam-mirrorbot",
+    "name": "mirrorbot",
     "description": "A Telegram bot for all your mirror needs",
-    "logo": "https://telegra.ph/file/6507910fd06d18dfaba82.jpg",
+    "logo": "https://telegra.ph/file/47f90a470500a0ad42f39.png",
     "keywords": [
       "bot",
       "telegram",
       "python"
     ],
-    "repository": "https://github.com/breakdowns/slam-mirrorbot",
-    "website": "https://github.com/breakdowns/slam-mirrorbot",
-    "success_url": "https://t.me/SlamMirrorSupport",
+    "repository": "https://github.com/yuno74/new-mirror",
+    "website": "https://github.com/yuno74/new-mirror",
+    "success_url": "https://github.com/yuno74/new-mirror",
     "stack": "container",
     "env": {
       "ENV": {
@@ -213,7 +213,222 @@
         "description": "Status limit with buttons, Recommend limit status to 4 tasks max.",
         "value": "",
         "required": false
-      }
+      },
+      "CHANNEL_LINK": {
+        "description": "Channel link",
+        "value": "https://t.me/AnimeRepublic74",
+        "required": true
+	  },
+      "SUPPORT_LINK": {
+        "description": "Support group",
+        "value": "https://t.me/AnimeChat74",
+        "required": true
+	  },
+      "GD_INFO": {
+        "description": "upload to gd description",
+        "value": "Uploaded by Mirrorbot",
+        "required": true
+	  },
+      "GD_BUTTON": {
+        "description": "google drive button",
+        "value": "☁️ Drive Link",
+        "required": true
+	  },
+      "INDEX_BUTTON": {
+        "description": "Index button",
+        "value": "⚡ Index Link",
+        "required": true
+	  },
+      "VIEW_BUTTON": {
+        "description": "view button",
+        "value": "🌐 View Link",
+        "required": true
+	  },
+      "TITLE_NAME": {
+        "description": "Telegraph title name for list",
+        "value": "List download",
+        "required": true
+	  },
+      "AUTHOR_NAME": {
+        "description": "Telegraph author name for list",
+        "value": "Mirrorbot",
+        "required": true
+	  },
+      "AUTHOR_URL": {
+        "description": "Telegraph author url for list",
+        "value": "",
+        "required": false
+	  },
+      "TELEGRAPH_DRIVE": {
+        "description": "Telegraph drive link for list",
+        "value": "Drive Link",
+        "required": true
+	  },
+      "TELEGRAPH_INDEX": {
+        "description": "Telegraph index link for list",
+        "value": "Index Link",
+        "required": true
+	  },
+      "TELEGRAPH_VIEW": {
+        "description": "Telegraph view link for list",
+        "value": "View Link",
+        "required": true
+	  },
+      "SEARCH_VIEW_BUTTON": {
+        "description": "button for search",
+        "value": "🔎 VIEW",
+        "required": true
+	  },
+      "START_BOT": {
+        "description": "start command",
+        "value": "start",
+        "required": true
+	  },
+      "MIRROR_BOT": {
+        "description": "Mirror command",
+        "value": "mir",
+        "required": true
+	  },
+      "TARMIR_BOT": {
+        "description": "unzip command",
+        "value": "unzip",
+        "required": true
+	  },
+      "TARMIR_BOT": {
+        "description": "Tar command",
+        "value": "tarmir",
+        "required": true
+	  },
+      "CANCEL_BOT": {
+        "description": "Cancel command",
+        "value": "cancel",
+        "required": true
+	  },
+      "CANCEL_ALL_BOT": {
+        "description": "cancelall command",
+        "value": "cancelall",
+        "required": true
+	  },
+      "LIST_BOT": {
+        "description": "list command",
+        "value": "list",
+        "required": true
+	  },
+      "STATUS_BOT": {
+        "description": "status command",
+        "value": "status",
+        "required": true
+	  },
+      "USERS_BOT": {
+        "description": "users command",
+        "value": "users",
+        "required": true
+	  },
+      "AUTH_BOT": {
+        "description": "auth command",
+        "value": "auth",
+        "required": true
+	  },
+      "UNAUTH_BOT": {
+        "description": "unauth command",
+        "value": "unauth",
+        "required": true
+	  },
+      "ADDSUDO_BOT": {
+        "description": "addsudo command",
+        "value": "addsudo",
+        "required": true
+	  },
+      "RMSUDO_BOT": {
+        "description": "remove sudo command",
+        "value": "rmsudo",
+        "required": true
+	  },
+      "RESTART_BOT": {
+        "description": "restart command",
+        "value": "restart",
+        "required": true
+	  },
+      "STATS_BOT": {
+        "description": "stats command",
+        "value": "stats",
+        "required": true
+	  },
+      "HELP_BOT": {
+        "description": "help command",
+        "value": "help",
+        "required": true
+	  },
+      "LOG_BOT": {
+        "description": "log command",
+        "value": "log",
+        "required": true
+	  },
+      "SPEEDTEST_BOT": {
+        "description": "speedtest command",
+        "value": "speedtest",
+        "required": true
+	  },
+      "CLONE_BOT": {
+        "description": "clone command",
+        "value": "clone",
+        "required": true
+	  },
+      "COUNT_BOT": {
+        "description": "count command",
+        "value": "count",
+        "required": true
+	  },
+      "YTDL_BOT": {
+        "description": "youtube download command",
+        "value": "yt",
+        "required": true
+	  },
+      "TARYTDL_BOT": {
+        "description": "tar youtube command",
+        "value": "taryt",
+        "required": true
+	  },
+      "DELETE_BOT": {
+        "description": "delete google drive file command",
+        "value": "del",
+        "required": true
+	  },
+      "USAGE_BOT": {
+        "description": "usage command",
+        "value": "usage",
+        "required": true
+	  },
+      "MEDIAINFO_BOT": {
+        "description": "mediainfo command",
+        "value": "media",
+        "required": true
+	  },
+      "CONFIG_BOT": {
+        "description": "config command",
+        "value": "config",
+        "required": true
+	  },
+      "SHELL_BOT": {
+        "description": "shell command",
+        "value": "shell",
+        "required": true
+	  },
+      "UPDATE_BOT": {
+        "description": "update command",
+        "value": "update",
+        "required": true
+	  },
+      "EXEHELP_BOT": {
+        "description": "exehelp command",
+        "value": "exehelp",
+        "required": true
+	  },
+      "TSHELP_BOT": {
+        "description": "tshelp command",
+        "value": "tshelp",
+        "required": true
+      }	  
     },
     "addons": [
       {
