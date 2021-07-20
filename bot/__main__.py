@@ -226,7 +226,7 @@ def main():
     jam = kie.strftime('%d/%m/%Y %I:%M%P')
     if GROUP_ID is not None and isinstance(GROUP_ID, str):        
         try:
-            dispatcher.bot.sendMessage(f"{GROUP_ID}", f"♻️ BOT GOT RESTARTED ♻️\n{jam}\n\n<b>Please Redownload again\n\n#restarted")
+            dispatcher.bot.sendMessage(f"{GROUP_ID}", f"♻️ BOT GOT RESTARTED ♻️\n{jam}\n\n<b>Please Redownload again<b>\n\n#restarted")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
