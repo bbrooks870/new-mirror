@@ -154,7 +154,7 @@
       },
       "TIMEZONE": {
         "description": "To change time zone in /stats command.",
-        "value": "Asia/Jakarta",
+        "value": "Asia/Kuala_Lumpur",
         "required": false
       },
       "IMAGE_URL": {
