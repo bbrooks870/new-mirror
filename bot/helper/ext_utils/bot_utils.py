@@ -135,7 +135,7 @@ def get_readable_message():
                             f" | <b>🌏:</b> {download.aria_download().connections}"
                     except:
                         pass
-                    msg += f'\n<b>👥 User:</b> <b>{download.message.from_user.first_name}</b> (<code>{download.message.from_user.id}</code>)\n<b>⚠️ Warn:</b><code>/warn {download.message.from_user.id}</code>'
+                    msg += f'\n<b>👥 User:</b> <b>{download.message.from_user.first_name}</b>\n<b>⚠️ Warn:</b><code>/warn {download.message.from_user.id}</code>'
                     msg += f"\n<b>⛔ Cancel:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
                 msg += "\n\n"
                 if STATUS_LIMIT is not None:
