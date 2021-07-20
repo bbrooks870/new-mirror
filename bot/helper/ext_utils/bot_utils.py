@@ -23,6 +23,7 @@ PAGE_NO = 1
 class MirrorStatus:
     STATUS_UPLOADING = "📤 ᴜᴘʟᴏᴀᴅɪɴɢ 📤"
     STATUS_DOWNLOADING = "📥 ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ 📥"
+    STATUS_CLONING = "♻ ️ᴄʟᴏɴɪɴɢ"
     STATUS_WAITING = "📄 ǫᴜᴇǫᴇᴅ"
     STATUS_FAILED = "🚫 ғᴀɪʟᴇᴅ"
     STATUS_ARCHIVING = "🔐 ᴀʀᴄʜɪᴠɪɴɢ"
@@ -32,7 +33,7 @@ class MirrorStatus:
 PROGRESS_MAX_SIZE = 100 // 8
 # PROGRESS_INCOMPLETE = ['▏', '▎', '▍', '▌', '▋', '▊', '▉']
 
-SIZE_UNITS = ['ʙ', 'ᴋʙ', 'ᴍʙ', 'ɢʙ', 'ᴛʙ', 'ᴘʙ']
+SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
 
 class setInterval:
@@ -122,19 +123,22 @@ def get_readable_message():
                 if download.status() != MirrorStatus.STATUS_ARCHIVING and download.status() != MirrorStatus.STATUS_EXTRACTING:
                     msg += f"\n<code>{get_progress_bar_string(download)} {download.progress()}</code>"
                     if download.status() == MirrorStatus.STATUS_DOWNLOADING:
-                        msg += f"\n<b>Downloaded:</b> {get_readable_file_size(download.processed_bytes())}\n<b>File Size</b>: {download.size()}"
+                        msg += f"\n<b>Downloaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                    elif download.status() == MirrorStatus.STATUS_CLONING:
+                        msg += f"\n<b>Cloned:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                     else:
-                        msg += f"\n<b>Uploaded:</b> {get_readable_file_size(download.processed_bytes())}\n<b>File Size</b>: {download.size()}"
-                    msg += f"\n<b>Speed:</b> {download.speed()}\n<b>ETA:</b> {download.eta()} "
+                        msg += f"\n<b>Uploaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                    msg += f"\n<b>Speed:</b> {download.speed()}" \
+                            f", <b>ETA:</b> {download.eta()} "
                     # if hasattr(download, 'is_torrent'):
                     try:
                         msg += f"\n<b>🌱:</b> {download.aria_download().num_seeders}" \
                             f" | <b>🌏:</b> {download.aria_download().connections}"
                     except:
                         pass
-                    msg += f'\n<b>User:</b> <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a> (<code>{download.message.from_user.id}</code>)'
-                if download.status() == MirrorStatus.STATUS_DOWNLOADING:
-                    msg += f"\n<b>Cancel:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                    msg += f'\n<b>User:</b> <b>{download.message.from_user.first_name}</b> (<code>{download.message.from_user.id}</code>)'
+                if download.status() == MirrorStatus.STATUS_DOWNLOADING or download.status() == MirrorStatus.STATUS_CLONING:
+                    msg += f"\n<b>To Stop:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
                 msg += "\n\n"
                 if STATUS_LIMIT is not None:
                     if INDEX >= COUNT + STATUS_LIMIT:

@@ -1,7 +1,12 @@
 import datetime
 import html
 import textwrap
+import os
 
+from pyrogram import filters
+from bot import app
+from bot import bot
+from bot.helper.telegram_helper.bot_commands import BotCommands
 import bs4
 import requests
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, ParseMode
@@ -251,7 +256,10 @@ def manga(update: Update, _):
         else: update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(buttons))
 
 @run_async
-def weebhelp(update, context):
+@app.on_message(filters.command([BotCommands.WeebCommand,f"{BotCommands.WeebCommand}@{bot.username}"]))
+async def weebhelp(update, context):
+    message = update.effective_message
+    
     help_string = '''
 • `/al`*:* search anime
 • `/chr`*:* search character
@@ -259,13 +267,10 @@ def weebhelp(update, context):
 '''
     update.effective_message.reply_photo(f"{IMAGE_URL}", help_string, parse_mode=ParseMode.MARKDOWN)
 
-
 ANIME_HANDLER = CommandHandler("al", anime)
 CHARACTER_HANDLER = CommandHandler("chr", character)
 MANGA_HANDLER = CommandHandler("mng", manga)
-WEEBHELP_HANDLER = CommandHandler("weebhelp", weebhelp)
 
 dispatcher.add_handler(ANIME_HANDLER)
 dispatcher.add_handler(CHARACTER_HANDLER)
 dispatcher.add_handler(MANGA_HANDLER)
-dispatcher.add_handler(WEEBHELP_HANDLER)

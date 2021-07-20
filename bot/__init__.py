@@ -89,6 +89,7 @@ if os.path.exists('sudo_users.txt'):
     with open('sudo_users.txt', 'r+') as f:
         lines = f.readlines()
         for line in lines:
+            AUTHORIZED_CHATS.add(int(line.split()[0]))
             SUDO_USERS.add(int(line.split()[0]))
 try:
     achats = getConfig('AUTHORIZED_CHATS')
@@ -101,6 +102,7 @@ try:
     schats = getConfig('SUDO_USERS')
     schats = schats.split(" ")
     for chats in schats:
+        AUTHORIZED_CHATS.add(int(chats))
         SUDO_USERS.add(int(chats))
 except:
     pass
@@ -158,12 +160,13 @@ try:
     TELEGRAPH_INDEX = getConfig('TELEGRAPH_INDEX')
     TELEGRAPH_VIEW = getConfig('TELEGRAPH_VIEW')
     SEARCH_VIEW_BUTTON = getConfig('SEARCH_VIEW_BUTTON')
-    YOUR_TIME_ZONE = getConfig('YOUR_TIME_ZONE')
     CHANNEL_LINK = getConfig('CHANNEL_LINK')
     SUPPORT_LINK = getConfig('SUPPORT_LINK')
     BOT_USERNAME = getConfig('BOT_USERNAME')
     BOT_NAME = getConfig('BOT_NAME')
+    ORDER_SORT = getConfig('ORDER_SORT')
     GD_BUTTON = getConfig('GD_BUTTON')
+    WEEB_BOT = getConfig('WEEB_BOT')
     
 except KeyError as e:
     LOGGER.error("One or more env variables missing! Exiting now")
@@ -394,6 +397,13 @@ try:
         UNFINISHED_PROGRESS_STR = '○'
 except KeyError:
     UNFINISHED_PROGRESS_STR = '○'
+try:
+    TIMEZONE = getConfig('TIMEZONE')
+    if len(TIMEZONE) == 0:
+        TIMEZONE = 'Asia/Kuala_Lumpur'
+except KeyError:
+    TIMEZONE = 'Asia/Kuala_Lumpur'
+
 updater = tg.Updater(token=BOT_TOKEN)
 bot = updater.bot
 dispatcher = updater.dispatcher

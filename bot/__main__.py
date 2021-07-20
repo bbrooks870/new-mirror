@@ -3,15 +3,16 @@ import signal
 import os
 
 from pyrogram import idle
-from bot import app, YOUR_TIME_ZONE, SUPPORT_LINK, CHANNEL_LINK
+from bot import app, SUPPORT_LINK, CHANNEL_LINK, AUTHORIZED_CHATS
 from sys import executable
 from datetime import datetime
 import pytz
 import time
 
+from telegram.error import BadRequest, Unauthorized
 from telegram import ParseMode
 from telegram.ext import CommandHandler
-from bot import bot, dispatcher, updater, botStartTime, IMAGE_URL, IGNORE_PENDING_REQUESTS
+from bot import bot, dispatcher, updater, botStartTime, IMAGE_URL, IGNORE_PENDING_REQUESTS, TIMEZONE
 from bot.helper.ext_utils import fs_utils
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.message_utils import *
@@ -19,8 +20,7 @@ from .helper.ext_utils.bot_utils import get_readable_file_size, get_readable_tim
 from .helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper import button_build
 from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, torrent_search, delete, speedtest, usage, mediainfo, count, config, updates
-
-now=datetime.now(pytz.timezone(f'{YOUR_TIME_ZONE}'))
+now=datetime.now(pytz.timezone(f'{TIMEZONE}'))
 
 
 def stats(update, context):
@@ -143,7 +143,7 @@ def bot_help(update, context):
 
 /{BotCommands.SpeedCommand}: Check Internet Speed of the Host
 
-<code>/{BotCommands.MediaInfoCommand}</code>: Get detailed info about replied media (Only for Telegram file)
+/{BotCommands.MediaInfoCommand}: Get detailed info about replied media (Only for Telegram file)
 
 /{BotCommands.ShellCommand}: Run commands in Shell (Terminal)
 
@@ -151,7 +151,7 @@ def bot_help(update, context):
 
 /{BotCommands.TsHelpCommand}: Get help for Torrent search module
 
-<code>/weebhelp</code>: for anime stuff
+/{BotCommands.WeebCommand}: for anime stuff
 '''
 
     help_string = f'''
@@ -183,11 +183,11 @@ def bot_help(update, context):
 
 /{BotCommands.SpeedCommand}: Check Internet Speed of the Host
 
-<code>/{BotCommands.MediaInfoCommand}</code>: Get detailed info about replied media (Only for Telegram file)
+/{BotCommands.MediaInfoCommand}: Get detailed info about replied media (Only for Telegram file)
 
 /{BotCommands.TsHelpCommand}: Get help for Torrent search module
 
-<code>/weebhelp</code>: for anime stuff
+/{BotCommands.WeebCommand}: for anime stuff
 '''
 
     if CustomFilters.sudo_user(update) or CustomFilters.owner_filter(update):
@@ -210,14 +210,30 @@ botcmds = [
         (f'{BotCommands.CancelAllCommand}','Cancel all tasks'),
         (f'{BotCommands.ListCommand}','Searches files in Drive'),
         (f'{BotCommands.StatusCommand}','Get Mirror Status message'),
+        (f'{BotCommands.MediaInfoCommand}','Get media info'),        
         (f'{BotCommands.StatsCommand}','Bot Usage Stats'),
         (f'{BotCommands.RestartCommand}','Restart the bot [owner/sudo only]'),
         (f'{BotCommands.LogCommand}','Get the Bot Log [owner/sudo only]'),
-        (f'{BotCommands.TsHelpCommand}','Get help for Torrent search module')
+        (f'{BotCommands.TsHelpCommand}','Get help for Torrent search module'),
+        (f'{BotCommands.WeebCommand}','Anime stuff')
     ]
 
 
 def main():
+    # Heroku restarted
+    GROUP_ID = '-1001437939580 -1001272467137'
+    kie = datetime.now(pytz.timezone(f'{TIMEZONE}'))
+    jam = kie.strftime('%d/%m/%Y %I:%M%P')
+    if GROUP_ID is not None and isinstance(GROUP_ID, str):        
+        try:
+            dispatcher.bot.sendMessage(f"{GROUP_ID}", f"♻️ BOT GOT RESTARTED.\n{jam}")
+        except Unauthorized:
+            LOGGER.warning(
+                "Bot isnt able to send message to support_chat, go and check!"
+            )
+        except BadRequest as e:
+            LOGGER.warning(e.message)
+            
     fs_utils.start_cleanup()
     # Check if the bot is restarting
     if os.path.isfile(".restartmsg"):
