@@ -19,7 +19,7 @@ from bot.helper.telegram_helper.message_utils import *
 from .helper.ext_utils.bot_utils import get_readable_file_size, get_readable_time
 from .helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper import button_build
-from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, torrent_search, delete, speedtest, usage, mediainfo, count, config, updates
+from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, torrent_search, delete, usage, mediainfo, count, updates
 now=datetime.now(pytz.timezone(f'{TIMEZONE}'))
 
 
@@ -215,7 +215,6 @@ botcmds = [
         (f'{BotCommands.RestartCommand}','Restart the bot [owner/sudo only]'),
         (f'{BotCommands.LogCommand}','Get the Bot Log [owner/sudo only]'),
         (f'{BotCommands.TsHelpCommand}','Get help for Torrent search module'),
-        (f'{BotCommands.WeebCommand}','Anime stuff')
     ]
 
 
