@@ -443,11 +443,6 @@
         "description": "anime stuff",
         "value": "weebhelp",
         "required": true
-	  },
-      "RESTARTED_GROUP_ID": {
-        "description": "restart notice group id",
-        "value": "-100",
-        "required": true
       }	  
     },
     "addons": [
