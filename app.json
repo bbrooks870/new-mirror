@@ -436,7 +436,7 @@
 	  },
       "RESTARTED_GROUP_ID": {
         "description": "Give group id you want to notice restart",
-        "value": "-100,
+        "value": "-100",
         "required": true
 	  },
       "WEEB_BOT": {
