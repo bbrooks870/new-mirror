@@ -19,7 +19,7 @@ from bot.helper.telegram_helper.message_utils import *
 from .helper.ext_utils.bot_utils import get_readable_file_size, get_readable_time
 from .helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper import button_build
-from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, delete, usage, mediainfo, count
+from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, delete, usage, mediainfo, count, anime
 now=datetime.now(pytz.timezone(f'{TIMEZONE}'))
 
 
@@ -151,7 +151,7 @@ def bot_help(update, context):
 
 /{BotCommands.TsHelpCommand}: Get help for Torrent search module
 
-/{BotCommands.WeebCommand}: for anime stuff
+<code>/{BotCommands.WeebCommand}</code>: for anime stuff
 '''
 
     help_string = f'''
@@ -187,7 +187,7 @@ def bot_help(update, context):
 
 /{BotCommands.TsHelpCommand}: Get help for Torrent search module
 
-/{BotCommands.WeebCommand}: for anime stuff
+<code>/{BotCommands.WeebCommand}</code>: for anime stuff: for anime stuff
 '''
 
     if CustomFilters.sudo_user(update) or CustomFilters.owner_filter(update):
@@ -221,7 +221,7 @@ botcmds = [
 
 def main():
     # Heroku restarted
-    GROUP_ID = '-1001437939580'
+    GROUP_ID = f'{RESTARTED_GROUP_ID}'
     kie = datetime.now(pytz.timezone(f'{TIMEZONE}'))
     jam = kie.strftime('%d/%m/%Y %I:%M%P')
     if GROUP_ID is not None and isinstance(GROUP_ID, str):        

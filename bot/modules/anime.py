@@ -256,10 +256,7 @@ def manga(update: Update, _):
         else: update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(buttons))
 
 @run_async
-@app.on_message(filters.command([BotCommands.WeebCommand,f"{BotCommands.WeebCommand}@{bot.username}"]))
-async def weebhelp(update, context):
-    message = update.effective_message
-    
+def weebhelp(update, context):
     help_string = '''
 • `/al`*:* search anime
 • `/chr`*:* search character
@@ -267,10 +264,13 @@ async def weebhelp(update, context):
 '''
     update.effective_message.reply_photo(f"{IMAGE_URL}", help_string, parse_mode=ParseMode.MARKDOWN)
 
+
 ANIME_HANDLER = CommandHandler("al", anime)
 CHARACTER_HANDLER = CommandHandler("chr", character)
 MANGA_HANDLER = CommandHandler("mng", manga)
+WEEBHELP_HANDLER = CommandHandler(f"{WEEB_BOT}", weebhelp)
 
 dispatcher.add_handler(ANIME_HANDLER)
 dispatcher.add_handler(CHARACTER_HANDLER)
 dispatcher.add_handler(MANGA_HANDLER)
+dispatcher.add_handler(WEEBHELP_HANDLER)

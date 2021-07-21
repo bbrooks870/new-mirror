@@ -1,6 +1,6 @@
 from telegram.ext import CommandHandler
 from telegram import Bot, Update
-from bot import Interval, DOWNLOAD_DIR, DOWNLOAD_STATUS_UPDATE_INTERVAL, dispatcher, LOGGER, BOT_NAME
+from bot import Interval, DOWNLOAD_DIR, DOWNLOAD_STATUS_UPDATE_INTERVAL, dispatcher, LOGGER
 from bot.helper.ext_utils.bot_utils import setInterval
 from bot.helper.telegram_helper.message_utils import update_all_messages, sendMessage, sendStatusMessage
 from .mirror import MirrorListener
@@ -20,7 +20,7 @@ def _watch(bot: Bot, update, isTar=False):
         msg = f"/{BotCommands.WatchCommand} [youtube-dl supported link] [quality] |[CustomName] to mirror with youtube-dl.\n\n"
         msg += "<b>Note: Quality and custom name are optional</b>\n\nExample of quality: audio, 144, 240, 360, 480, 720, 1080, 2160."
         msg += "\n\nIf you want to use custom filename, enter it after |"
-        msg += f"\n\nExample:\n<code>/{BotCommands.WatchCommand} https://youtu.be/Pk_TthHfLeE 720 |{BOT_NAME}</code>\n\n"
+        msg += f"\n\nExample:\n<code>/{BotCommands.WatchCommand} https://youtu.be/Pk_TthHfLeE 720 |newname.extension</code>\n\n"
         msg += "This file will be downloaded in 720p quality and it's name will be <b>{BOT_NAME}</b>"
         sendMessage(msg, bot, update)
         return

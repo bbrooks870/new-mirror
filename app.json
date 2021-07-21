@@ -433,6 +433,21 @@
         "description": "for list sorting",
         "value": "modifiedTime desc",
         "required": true
+	  },
+      "RESTARTED_GROUP_ID": {
+        "description": "Give group id you want to notice restart",
+        "value": "-100,
+        "required": true
+	  },
+      "WEEB_BOT": {
+        "description": "anime stuff",
+        "value": "weebhelp",
+        "required": true
+	  },
+      "RESTARTED_GROUP_ID": {
+        "description": "restart notice group id",
+        "value": "-100",
+        "required": true
       }	  
     },
     "addons": [

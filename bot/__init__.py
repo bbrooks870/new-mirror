@@ -167,6 +167,7 @@ try:
     ORDER_SORT = getConfig('ORDER_SORT')
     GD_BUTTON = getConfig('GD_BUTTON')
     WEEB_BOT = getConfig('WEEB_BOT')
+    RESTARTED_GROUP_ID = getConfig('RESTARTED_GROUP_ID')
     
 except KeyError as e:
     LOGGER.error("One or more env variables missing! Exiting now")
