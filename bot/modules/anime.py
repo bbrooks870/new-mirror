@@ -10,7 +10,7 @@ from bot.helper.telegram_helper.bot_commands import BotCommands
 import bs4
 import requests
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, ParseMode
-from bot import IMAGE_URL
+from bot import IMAGE_URL, WEEB_BOT
 from telegram.ext import run_async, CallbackContext, CommandHandler
 
 from bot import dispatcher
