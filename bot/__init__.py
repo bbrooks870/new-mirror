@@ -149,7 +149,6 @@ try:
     SHELL_BOT = getConfig('SHELL_BOT')
     UPDATE_BOT = getConfig('UPDATE_BOT')
     EXEHELP_BOT = getConfig('EXEHELP_BOT')
-    TSHELP_BOT = getConfig('TSHELP_BOT')
     INDEX_BUTTON = getConfig('INDEX_BUTTON')
     TITLE_NAME = getConfig('TITLE_NAME')
     AUTHOR_NAME = getConfig('AUTHOR_NAME')
@@ -168,6 +167,7 @@ try:
     GD_BUTTON = getConfig('GD_BUTTON')
     WEEB_BOT = getConfig('WEEB_BOT')
     RESTARTED_GROUP_ID = getConfig('RESTARTED_GROUP_ID')
+    USE_SERVICE_ACCOUNTS = getConfig('USE_SERVICE_ACCOUNTS')
     
 except KeyError as e:
     LOGGER.error("One or more env variables missing! Exiting now")
@@ -341,14 +341,6 @@ try:
         IS_TEAM_DRIVE = False
 except KeyError:
     IS_TEAM_DRIVE = False
-try:
-    USE_SERVICE_ACCOUNTS = getConfig('USE_SERVICE_ACCOUNTS')
-    if USE_SERVICE_ACCOUNTS.lower() == 'true':
-        USE_SERVICE_ACCOUNTS = True
-    else:
-        USE_SERVICE_ACCOUNTS = False
-except KeyError:
-    USE_SERVICE_ACCOUNTS = False
 try:
     BLOCK_MEGA_FOLDER = getConfig('BLOCK_MEGA_FOLDER')
     if BLOCK_MEGA_FOLDER.lower() == 'true':

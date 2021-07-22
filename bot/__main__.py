@@ -149,9 +149,6 @@ def bot_help(update, context):
 
 /{BotCommands.ExecHelpCommand}: Get help for Executor module
 
-/{BotCommands.TsHelpCommand}: Get help for Torrent search module
-
-<code>/{BotCommands.WeebCommand}</code>: for anime stuff
 '''
 
     help_string = f'''
@@ -185,9 +182,6 @@ def bot_help(update, context):
 
 /{BotCommands.MediaInfoCommand}: Get detailed info about replied media (Only for Telegram file)
 
-/{BotCommands.TsHelpCommand}: Get help for Torrent search module
-
-<code>/{BotCommands.WeebCommand}</code>: for anime stuff: for anime stuff
 '''
 
     if CustomFilters.sudo_user(update) or CustomFilters.owner_filter(update):
@@ -214,7 +208,6 @@ botcmds = [
         (f'{BotCommands.StatsCommand}','Bot Usage Stats'),
         (f'{BotCommands.RestartCommand}','Restart the bot [owner/sudo only]'),
         (f'{BotCommands.LogCommand}','Get the Bot Log [owner/sudo only]'),
-        (f'{BotCommands.TsHelpCommand}','Get help for Torrent search module'),
         (f'{BotCommands.UsageCommand}','Get Dyno left'),
     ]
 

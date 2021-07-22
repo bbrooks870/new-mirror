@@ -424,11 +424,6 @@
         "value": "exehelp",
         "required": true
 	  },
-      "TSHELP_BOT": {
-        "description": "tshelp command",
-        "value": "tshelp",
-        "required": true
-	  },
       "ORDER_SORT": {
         "description": "for list sorting",
         "value": "modifiedTime desc",
@@ -442,6 +437,11 @@
       "WEEB_BOT": {
         "description": "anime stuff",
         "value": "weebhelp",
+        "required": true
+	  },
+      "USE_SERVICE_ACCOUNTS": {
+        "description": "set this to true if want using Service account",
+        "value": "false",
         "required": true
       }	  
     },
