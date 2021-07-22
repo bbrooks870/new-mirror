@@ -46,10 +46,6 @@
         "description": "Set to 'True' if GDRIVE_FOLDER_ID is from a Team Drive else False or Leave it empty.",
         "required": false
       },
-      "USE_SERVICE_ACCOUNTS": {
-        "description": "Whether to use Service Accounts or not. For this to work see 'Using Service Accounts' in repo.",
-        "required": false
-      },
       "AUTHORIZED_CHATS": {
         "description": "Fill User ID and Chat ID of you want to authorize, Seprate them with space.",
         "required": false
@@ -289,7 +285,7 @@
         "value": "mir",
         "required": true
 	  },
-      "TARMIR_BOT": {
+      "UNZIP_BOT": {
         "description": "unzip command",
         "value": "unzip",
         "required": true
@@ -297,6 +293,11 @@
       "TARMIR_BOT": {
         "description": "Tar command",
         "value": "tarmir",
+        "required": true
+	  },
+      "USE_SERVICE_ACCOUNTS": {
+        "description": "set true if want use service account",
+        "value": "false",
         "required": true
 	  },
       "CANCEL_BOT": {
