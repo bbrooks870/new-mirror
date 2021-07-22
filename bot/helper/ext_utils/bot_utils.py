@@ -4,7 +4,7 @@ import threading
 import time
 import math
 
-from localisation import Localisation
+from bot.localisation import Localisation
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot import dispatcher, download_dict, download_dict_lock, FINISHED_PROGRESS_STR, UNFINISHED_PROGRESS_STR, STATUS_LIMIT
 from telegram import InlineKeyboardMarkup
