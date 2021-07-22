@@ -4,6 +4,7 @@ import threading
 import time
 import math
 
+from localisation import Localisation
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot import dispatcher, download_dict, download_dict_lock, FINISHED_PROGRESS_STR, UNFINISHED_PROGRESS_STR, STATUS_LIMIT
 from telegram import InlineKeyboardMarkup
@@ -21,13 +22,13 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "📤 ᴜᴘʟᴏᴀᴅɪɴɢ 📤"
-    STATUS_DOWNLOADING = "📥 ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ 📥"
-    STATUS_CLONING = "♻ ️ᴄʟᴏɴɪɴɢ"
-    STATUS_WAITING = "📄 ǫᴜᴇǫᴇᴅ"
-    STATUS_FAILED = "🚫 ғᴀɪʟᴇᴅ"
-    STATUS_ARCHIVING = "🔐 ᴀʀᴄʜɪᴠɪɴɢ"
-    STATUS_EXTRACTING = "📂 ᴇxᴛʀᴀᴄᴛɪɴɢ"
+    STATUS_UPLOADING = Localisation.STATUS_UPLOADING
+    STATUS_DOWNLOADING = Localisation.STATUS_DOWNLOADING
+    STATUS_CLONING = Localisation.STATUS_CLONING
+    STATUS_WAITING = Localisation.STATUS_WAITING
+    STATUS_FAILED = Localisation.STATUS_FAILED
+    STATUS_ARCHIVING = Localisation.STATUS_ARCHIVING
+    STATUS_EXTRACTING = Localisation.STATUS_EXTRACTING
 
 
 PROGRESS_MAX_SIZE = 100 // 8
