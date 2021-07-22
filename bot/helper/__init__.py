@@ -7,7 +7,7 @@ from functools import wraps
 from pyrogram.types import Message
 from typing import Tuple
 from html_telegraph_poster import TelegraphPoster
-from bot import HEROKU_API_KEY, HEROKU_APP_NAME
+from bot import HEROKU_API_KEY, HEROKU_APP_NAME, AUTHOR_NAME, AUTHOR_URL
 
 # Implement by https://github.com/jusidama18
 # Setting Message
@@ -77,12 +77,12 @@ HEROKU_URL = fetch_heroku_git_url(HEROKU_API_KEY, HEROKU_APP_NAME)
 def post_to_telegraph(a_title: str, content: str) -> str:
     """ Create a Telegram Post using HTML Content """
     post_client = TelegraphPoster(use_api=True)
-    auth_name = "slam-mirrorbot"
+    auth_name = f"{AUTHOR_NAME}"
     post_client.create_api_token(auth_name)
     post_page = post_client.post(
         title=a_title,
         author=auth_name,
-        author_url="https://github.com/breakdowns/slam-mirrorbot",
+        author_url=f"{AUTHOR_URL}",
         text=content,
     )
     return post_page["url"]
