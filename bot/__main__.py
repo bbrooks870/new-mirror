@@ -12,7 +12,7 @@ import time
 from telegram.error import BadRequest, Unauthorized
 from telegram import ParseMode
 from telegram.ext import CommandHandler
-from bot import bot, dispatcher, updater, botStartTime, IMAGE_URL, IGNORE_PENDING_REQUESTS, TIMEZONE, RESTARTED_GROUP_ID
+from bot import bot, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS
 from bot.helper.ext_utils import fs_utils
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.message_utils import *
@@ -45,7 +45,7 @@ def stats(update, context):
             f'<b>CPU:</b> {cpuUsage}%\n' \
             f'<b>RAM:</b> {memory}%\n' \
             f'<b>DISK:</b> {disk}%'
-    update.effective_message.reply_photo(IMAGE_URL, stats, parse_mode=ParseMode.HTML)
+    sendMessage(stats, context.bot, update)
 
 
 def start(update, context):
@@ -63,7 +63,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         if update.message.chat.type == "private" :
             sendMessage(f"Hey I'm Alive 🙂\nSince: <code>{uptime}</code>", context.bot, update)
         else :
-            update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
+            sendMarkup(start_string, context.bot, update, reply_markup)
     else :
         sendMessage(f"Oops! not a Authorized user.", context.bot, update)
 
