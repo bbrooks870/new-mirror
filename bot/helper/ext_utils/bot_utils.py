@@ -28,10 +28,11 @@ class MirrorStatus:
     STATUS_FAILED = "🚫 ғᴀɪʟᴇᴅ"
     STATUS_ARCHIVING = "🔐 ᴀʀᴄʜɪᴠɪɴɢ"
     STATUS_EXTRACTING = "📂 ᴇxᴛʀᴀᴄᴛɪɴɢ"
+    STATUS_PAUSE = "⏸️ ᴘᴀᴜsᴇᴅ"
 
 
 PROGRESS_MAX_SIZE = 100 // 8
-# PROGRESS_INCOMPLETE = ['▏', '▎', '▍', '▌', '▋', '▊', '▉']
+PROGRESS_INCOMPLETE = ['▏', '▎', '▍', '▌', '▋', '▊', '▉']
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
@@ -76,6 +77,7 @@ def getDownloadByGid(gid):
                     return dl
     return None
 
+
 def getAllDownload():
     with download_dict_lock:
         for dlDetails in list(download_dict.values()):
@@ -83,6 +85,7 @@ def getAllDownload():
                 if dlDetails:
                     return dlDetails
     return None
+
 
 def get_progress_bar_string(status):
     completed = status.processed_bytes() / 8
@@ -153,6 +156,7 @@ def get_readable_message():
                 return msg, button
         return msg, ""
 
+
 def flip(update, context):
     query = update.callback_query
     query.answer()
@@ -172,6 +176,7 @@ def flip(update, context):
             COUNT -= STATUS_LIMIT
             PAGE_NO -= 1
     message_utils.update_all_messages()
+
 
 def get_readable_time(seconds: int) -> str:
     result = ''
@@ -198,11 +203,14 @@ def is_url(url: str):
         return True
     return False
 
+
 def is_gdrive_link(url: str):
     return "drive.google.com" in url
 
+
 def is_mega_link(url: str):
     return "mega.nz" in url or "mega.co.nz" in url
+
 
 def get_mega_link_type(url: str):
     if "folder" in url:
@@ -213,11 +221,13 @@ def get_mega_link_type(url: str):
         return "folder"
     return "file"
 
+
 def is_magnet(url: str):
     magnet = re.findall(MAGNET_REGEX, url)
     if magnet:
         return True
     return False
+
 
 def new_thread(fn):
     """To use as decorator to make a function call threaded.
@@ -230,6 +240,7 @@ def new_thread(fn):
         return thread
 
     return wrapper
+
 
 next_handler = CallbackQueryHandler(flip, pattern="nex", run_async=True)
 previous_handler = CallbackQueryHandler(flip, pattern="pre", run_async=True)

@@ -17,7 +17,7 @@
         "value": "ANYTHING"
       },
       "BOT_TOKEN": {
-        "description": "The telegram bot token that you get from @BotFather.",
+        "description": "The Telegram bot token that you get from @BotFather.",
         "required": true
       },
       "GDRIVE_FOLDER_ID": {
@@ -199,7 +199,7 @@
       },
       "STATUS_LIMIT": {
         "description": "Status limit with buttons, Recommend limit status to 4 tasks max.",
-        "value": "",
+        "value": "4",
         "required": false
       },
       "CHANNEL_LINK": {
@@ -436,6 +436,21 @@
         "description": "anime stuff",
         "value": "weebhelp",
         "required": true
+	  },
+      "IS_VPS": {
+        "description": "Only for VPS, fill False.",
+        "value": "False",
+        "required": false
+	  },
+      "SERVER_PORT": {
+        "description": "Only for VPS, no need to fill it.",
+        "value": "",
+        "required": false
+	  },
+      "BASE_URL_OF_BOT": {
+        "description": "Heroku App name web url, Examples: https://yourappname.herokuapp.com",
+        "value": "https://yourappname.herokuapp.com",
+        "required": true
       }	  
     },
     "addons": [
@@ -444,7 +459,7 @@
       }
     ],
     "formation": {
-            "worker": {
+            "web": {
                 "quantity": 1,
                 "size": "free"
             }

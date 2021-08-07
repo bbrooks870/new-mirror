@@ -97,7 +97,7 @@ class GoogleDriveHelper:
             regex = r"https://drive\.google\.com/(drive)?/?u?/?\d?/?(mobile)?/?(file)?(folders)?/?d?/([-\w]+)[?+]?/?(w+)?"
             res = re.search(regex,link)
             if res is None:
-                raise IndexError("GDrive ID not found.")
+                raise IndexError("G-Drive ID not found.")
             return res.group(5)
         parsed = urlparse.urlparse(link)
         return parse_qs(parsed.query)['id'][0]
@@ -275,7 +275,7 @@ class GoogleDriveHelper:
                     raise Exception('Upload has been manually cancelled!')
                 link = f"https://drive.google.com/folderview?id={dir_id}"
                 if self.is_cancelled:
-                    LOGGER.info("Deleting uploaded data from drive...")
+                    LOGGER.info("Deleting uploaded data from Drive...")
                     msg = self.deletefile(link)
                     LOGGER.info(f"{msg}")
                     return
@@ -364,7 +364,7 @@ class GoogleDriveHelper:
         try:
             file_id = self.getIdFromUrl(link)
         except (KeyError,IndexError):
-            msg = "Google drive ID could not be found in the provided link"
+            msg = "Google Drive ID could not be found in the provided link"
             return msg
         msg = ""
         LOGGER.info(f"File ID: {file_id}")
@@ -375,10 +375,10 @@ class GoogleDriveHelper:
                 self.cloneFolder(meta.get('name'), meta.get('name'), meta.get('id'), dir_id)
                 durl = self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL.format(dir_id)
                 if self.is_cancelled:
-                    LOGGER.info("Deleting cloned data from drive...")
+                    LOGGER.info("Deleting cloned data from Drive...")
                     msg = self.deletefile(durl)
                     LOGGER.info(f"{msg}")
-                    return "Your clone has been stopped and cloned data has been deleted!", "cancelled"
+                    return "your clone has been stopped and cloned data has been deleted!", "cancelled"
                 msg += f'<b>Filename: </b><code>{meta.get("name")}</code>\n<b>Size: </b><code>{get_readable_file_size(self.transferred_size)}</code>'
                 msg += f'\n<b>Type: </b><code>Folder</code>'
                 msg += f'\n<b>SubFolders: </b><code>{self.total_folders}</code>'
@@ -493,7 +493,7 @@ class GoogleDriveHelper:
         file_id = file.get("id")
         if not IS_TEAM_DRIVE:
             self.__set_permission(file_id)
-        LOGGER.info("Created Google-Drive Folder:\nName: {}\nID: {} ".format(file.get("name"), file_id))
+        LOGGER.info("Created G-Drive Folder:\nName: {}\nID: {} ".format(file.get("name"), file_id))
         return file_id
 
     def upload_dir(self, input_directory, parent_id):
@@ -666,7 +666,7 @@ class GoogleDriveHelper:
         try:
             file_id = self.getIdFromUrl(link)
         except (KeyError,IndexError):
-            msg = "Google drive ID could not be found in the provided link"
+            msg = "Google Drive ID could not be found in the provided link"
             return msg
         msg = ""
         LOGGER.info(f"File ID: {file_id}")
@@ -729,7 +729,7 @@ class GoogleDriveHelper:
         try:
             file_id = self.getIdFromUrl(link)
         except (KeyError,IndexError):
-            msg = "Google drive ID could not be found in the provided link"
+            msg = "Google Drive ID could not be found in the provided link"
             return msg, "", ""
         LOGGER.info(f"File ID: {file_id}")
         try:

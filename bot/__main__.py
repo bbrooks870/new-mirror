@@ -1,6 +1,7 @@
 import shutil, psutil
 import signal
 import os
+import asyncio
 
 from pyrogram import idle
 from bot import app, SUPPORT_LINK, CHANNEL_LINK, AUTHORIZED_CHATS
@@ -12,7 +13,8 @@ import time
 from telegram.error import BadRequest, Unauthorized
 from telegram import ParseMode
 from telegram.ext import CommandHandler
-from bot import bot, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, TIMEZONE, RESTARTED_GROUP_ID
+from wserver import start_server_async
+from bot import bot, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, IS_VPS, SERVER_PORT
 from bot.helper.ext_utils import fs_utils
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.message_utils import *
@@ -65,7 +67,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         else :
             sendMarkup(start_string, context.bot, update, reply_markup)
     else :
-        sendMessage(f"Oops! not a Authorized user.", context.bot, update)
+        sendMarkup(f"Oops! not a Authorized user.\nPlease contact me @arata74", context.bot, update, reply_markup)
 
 
 def restart(update, context):
@@ -93,7 +95,7 @@ def bot_help(update, context):
     help_string_adm = f'''
 /{BotCommands.HelpCommand}: To get this message
 
-/{BotCommands.MirrorCommand} [download_url][magnet_link]: Start mirroring the link to Google Drive
+/{BotCommands.MirrorCommand} [download_url][magnet_link]: Start mirroring the link to Google Drive. Use /mirror qb to mirror with qBittorrent, and use /mirror qbs to select files before downloading
 
 /{BotCommands.TarMirrorCommand} [download_url][magnet_link]: Start mirroring and upload the archived (.tar) version of the download
 
@@ -139,25 +141,19 @@ def bot_help(update, context):
 
 /{BotCommands.UpdateCommand}: Update Bot from Upstream Repo (Owner Only)
 
-/{BotCommands.UsageCommand}: To see Heroku Dyno Stats (Owner & Sudo only)
-
 /{BotCommands.SpeedCommand}: Check Internet Speed of the Host
-
-/{BotCommands.MediaInfoCommand}: Get detailed info about replied media (Only for Telegram file)
 
 /{BotCommands.ShellCommand}: Run commands in Shell (Terminal)
 
-/{BotCommands.ExecHelpCommand}: Get help for Executor module
+/{BotCommands.ExecHelpCommand}: Get help for Executor module (Only Owner)
 
 /{BotCommands.TsHelpCommand}: Get help for Torrent search module
-
-<code>/{BotCommands.WeebCommand}</code>: for anime stuff
 '''
 
     help_string = f'''
 /{BotCommands.HelpCommand}: To get this message
 
-/{BotCommands.MirrorCommand} [download_url][magnet_link]: Start mirroring the link to Google Drive
+/{BotCommands.MirrorCommand} [download_url][magnet_link]: Start mirroring the link to Google Drive. Use /mirror qb to mirror with qBittorrent, and use /mirror qbs to select files before downloading
 
 /{BotCommands.TarMirrorCommand} [download_url][magnet_link]: Start mirroring and upload the archived (.tar) version of the download
 
@@ -181,13 +177,7 @@ def bot_help(update, context):
 
 /{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
 
-/{BotCommands.SpeedCommand}: Check Internet Speed of the Host
-
-/{BotCommands.MediaInfoCommand}: Get detailed info about replied media (Only for Telegram file)
-
 /{BotCommands.TsHelpCommand}: Get help for Torrent search module
-
-<code>/{BotCommands.WeebCommand}</code>: for anime stuff: for anime stuff
 '''
 
     if CustomFilters.sudo_user(update) or CustomFilters.owner_filter(update):
@@ -210,12 +200,10 @@ botcmds = [
         (f'{BotCommands.CancelAllCommand}','Cancel all tasks'),
         (f'{BotCommands.ListCommand}','Searches files in Drive'),
         (f'{BotCommands.StatusCommand}','Get Mirror Status message'),
-        (f'{BotCommands.MediaInfoCommand}','Get media info'),        
         (f'{BotCommands.StatsCommand}','Bot Usage Stats'),
         (f'{BotCommands.RestartCommand}','Restart the bot [owner/sudo only]'),
         (f'{BotCommands.LogCommand}','Get the Bot Log [owner/sudo only]'),
-        (f'{BotCommands.TsHelpCommand}','Get help for Torrent search module'),
-        (f'{BotCommands.UsageCommand}','Get Dyno left'),
+        (f'{BotCommands.TsHelpCommand}','Get help for Torrent search module')
     ]
 
 
@@ -235,6 +223,10 @@ def main():
             LOGGER.warning(e.message)
             
     fs_utils.start_cleanup()
+
+    if IS_VPS:
+        asyncio.get_event_loop().run_until_complete(start_server_async(SERVER_PORT))
+
     # Check if the bot is restarting
     if os.path.isfile(".restartmsg"):
         with open(".restartmsg") as f:

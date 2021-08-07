@@ -322,6 +322,7 @@ for command, value in torrents_dict.items():
 
 def searchhelp(update, context):
     help_string = '''
+<b>Torrent Search</b>
 • <code>/nyaasi</code> <i>[search query]</i>
 • <code>/sukebei</code> <i>[search query]</i>
 • <code>/1337x</code> <i>[search query]</i>
