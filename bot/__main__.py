@@ -4,7 +4,7 @@ import os
 import asyncio
 
 from pyrogram import idle
-from bot import app, SUPPORT_LINK, CHANNEL_LINK, AUTHORIZED_CHATS, TIMEZONE
+from bot import app, SUPPORT_LINK, CHANNEL_LINK, AUTHORIZED_CHATS, TIMEZONE, RESTARTED_GROUP_ID
 from sys import executable
 from datetime import datetime
 import pytz
@@ -95,7 +95,11 @@ def bot_help(update, context):
     help_string_adm = f'''
 /{BotCommands.HelpCommand}: To get this message
 
-/{BotCommands.MirrorCommand} [download_url][magnet_link]: Start mirroring the link to Google Drive. Use /mirror qb to mirror with qBittorrent, and use /mirror qbs to select files before downloading
+/{BotCommands.MirrorCommand} [download_url][magnet_link]: Start mirroring the link to Google Drive
+
+<code>/{BotCommands.MirrorCommand} qb</code> to mirror with qBittorrent
+
+<code>/{BotCommands.MirrorCommand} qbs</code> to select files before downloading
 
 /{BotCommands.TarMirrorCommand} [download_url][magnet_link]: Start mirroring and upload the archived (.tar) version of the download
 
@@ -153,7 +157,11 @@ def bot_help(update, context):
     help_string = f'''
 /{BotCommands.HelpCommand}: To get this message
 
-/{BotCommands.MirrorCommand} [download_url][magnet_link]: Start mirroring the link to Google Drive. Use /mirror qb to mirror with qBittorrent, and use /mirror qbs to select files before downloading
+/{BotCommands.MirrorCommand} [download_url][magnet_link]: Start mirroring the link to Google Drive
+
+<code>/{BotCommands.MirrorCommand} qb</code> to mirror with qBittorrent
+
+<code>/{BotCommands.MirrorCommand} qbs</code> to select files before downloading
 
 /{BotCommands.TarMirrorCommand} [download_url][magnet_link]: Start mirroring and upload the archived (.tar) version of the download
 
