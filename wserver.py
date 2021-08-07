@@ -36,12 +36,12 @@ p { font-size: 12px; margin: 24px;}
 </style>
 </head>
 <body>
-<h1>slam-tg-mirror-bot: <a href="#">Github</a></h1>
+<h1>Select file: <a href="#">Github</a></h1>
 <form action="{form_url}" method="POST">
 
 {My_content}
 
-<input type="submit" name="Select these files ;)">
+<input type="confirm" name="Select these files ;)">
 </form>
 
 <script>
@@ -109,7 +109,7 @@ code_page = """
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <title>
-Slam Torrent Files
+Torrent Files
 </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
