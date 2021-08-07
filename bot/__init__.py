@@ -154,8 +154,6 @@ try:
     YTDL_BOT = getConfig('YTDL_BOT')
     TARYTDL_BOT = getConfig('TARYTDL_BOT')
     DELETE_BOT = getConfig('DELETE_BOT')
-    USAGE_BOT = getConfig('USAGE_BOT')
-    MEDIAINFO_BOT = getConfig('MEDIAINFO_BOT')
     CONFIG_BOT = getConfig('CONFIG_BOT')
     SHELL_BOT = getConfig('SHELL_BOT')
     UPDATE_BOT = getConfig('UPDATE_BOT')
