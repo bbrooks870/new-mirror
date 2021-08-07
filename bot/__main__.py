@@ -4,7 +4,7 @@ import os
 import asyncio
 
 from pyrogram import idle
-from bot import app, SUPPORT_LINK, CHANNEL_LINK, AUTHORIZED_CHATS
+from bot import app, SUPPORT_LINK, CHANNEL_LINK, AUTHORIZED_CHATS, TIMEZONE
 from sys import executable
 from datetime import datetime
 import pytz
