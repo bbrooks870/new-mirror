@@ -172,7 +172,6 @@ try:
     CHANNEL_LINK = getConfig('CHANNEL_LINK')
     SUPPORT_LINK = getConfig('SUPPORT_LINK')
     BOT_USERNAME = getConfig('BOT_USERNAME')
-    BOT_NAME = getConfig('BOT_NAME')
     ORDER_SORT = getConfig('ORDER_SORT')
     GD_BUTTON = getConfig('GD_BUTTON')
     RESTARTED_GROUP_ID = getConfig('RESTARTED_GROUP_ID')
