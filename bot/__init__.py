@@ -177,7 +177,6 @@ try:
     BOT_NAME = getConfig('BOT_NAME')
     ORDER_SORT = getConfig('ORDER_SORT')
     GD_BUTTON = getConfig('GD_BUTTON')
-    WEEB_BOT = getConfig('WEEB_BOT')
     RESTARTED_GROUP_ID = getConfig('RESTARTED_GROUP_ID')
     
 except KeyError as e:
