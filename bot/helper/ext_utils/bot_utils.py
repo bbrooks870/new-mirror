@@ -80,7 +80,7 @@ def getDownloadByGid(gid):
 
 def getAllDownload():
     with download_dict_lock:
-        for dlDetails in list(download_dict.values()):
+        for dlDetails in download_dict.values():
             if dlDetails.status() == MirrorStatus.STATUS_DOWNLOADING or dlDetails.status() == MirrorStatus.STATUS_WAITING:
                 if dlDetails:
                     return dlDetails
@@ -135,11 +135,17 @@ def get_readable_message():
                     # if hasattr(download, 'is_torrent'):
                     try:
                         msg += f"\n<b>🌱:</b> {download.aria_download().num_seeders}" \
-                            f" | <b>🌏:</b> {download.aria_download().connections}"
+                            f" | <b>🌏:</b> {download.aria_download().connections}\n"
                     except:
                         pass
                     msg += f'\n<b>👥 User:</b> <b>{download.message.from_user.first_name}</b>\n<b>⚠️ Warn:</b><code>/warn {download.message.from_user.id}</code>'
-                    msg += f"\n<b>⛔ Cancel:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                    
+                    try:
+                        msg += f"\n<b>Seeders:</b> {download.torrent_info().num_seeds}" \
+                            f" | <b>Leechers:</b> {download.torrent_info().num_leechs}"
+                    except:
+                        pass
+                        msg += f"\n<b>⛔ Cancel:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
                 msg += "\n\n"
                 if STATUS_LIMIT is not None:
                     if INDEX >= COUNT + STATUS_LIMIT:

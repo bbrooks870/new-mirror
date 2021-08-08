@@ -448,7 +448,7 @@
         "required": false
 	  },
       "BASE_URL_OF_BOT": {
-        "description": "Heroku App name web url, Examples: https://yourappname.herokuapp.com",
+        "description": "Enter your Heroku app link to avoid the app from sleeping and to make it work with Torrent selection",
         "value": "https://yourappname.herokuapp.com",
         "required": true
       }	  

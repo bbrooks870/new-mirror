@@ -317,7 +317,7 @@ try:
     else:
         STOP_DUPLICATE = False
 except KeyError:
-    STOP_DUPLICATE = True
+    STOP_DUPLICATE = False
 try:
     VIEW_LINK = getConfig('VIEW_LINK')
     if VIEW_LINK.lower() == 'true':

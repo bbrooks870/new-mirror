@@ -125,8 +125,6 @@ def bot_help(update, context):
 
 /{BotCommands.StatsCommand}: Show Stats of the machine the bot is hosted on
 
-/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
-
 /{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
 
 /{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
@@ -140,18 +138,6 @@ def bot_help(update, context):
 /{BotCommands.RestartCommand}: Restart the bot
 
 /{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
-
-/{BotCommands.ConfigMenuCommand}: Get Info Menu about bot config (Owner Only)
-
-/{BotCommands.UpdateCommand}: Update Bot from Upstream Repo (Owner Only)
-
-/{BotCommands.SpeedCommand}: Check Internet Speed of the Host
-
-/{BotCommands.ShellCommand}: Run commands in Shell (Terminal)
-
-/{BotCommands.ExecHelpCommand}: Get help for Executor module (Only Owner)
-
-/{BotCommands.TsHelpCommand}: Get help for Torrent search module
 '''
 
     help_string = f'''
@@ -182,10 +168,6 @@ def bot_help(update, context):
 /{BotCommands.StatusCommand}: Shows a status of all the downloads
 
 /{BotCommands.StatsCommand}: Show Stats of the machine the bot is hosted on
-
-/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
-
-/{BotCommands.TsHelpCommand}: Get help for Torrent search module
 '''
 
     if CustomFilters.sudo_user(update) or CustomFilters.owner_filter(update):
@@ -210,8 +192,7 @@ botcmds = [
         (f'{BotCommands.StatusCommand}','Get Mirror Status message'),
         (f'{BotCommands.StatsCommand}','Bot Usage Stats'),
         (f'{BotCommands.RestartCommand}','Restart the bot [owner/sudo only]'),
-        (f'{BotCommands.LogCommand}','Get the Bot Log [owner/sudo only]'),
-        (f'{BotCommands.TsHelpCommand}','Get help for Torrent search module')
+        (f'{BotCommands.LogCommand}','Get the Bot Log [owner/sudo only]')
     ]
 
 
