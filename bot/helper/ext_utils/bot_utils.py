@@ -125,7 +125,7 @@ def get_readable_message():
                 if download.status() != MirrorStatus.STATUS_ARCHIVING and download.status() != MirrorStatus.STATUS_EXTRACTING:
                     msg += f"\n<code>{get_progress_bar_string(download)} {download.progress()}</code>"
                     if download.status() == MirrorStatus.STATUS_DOWNLOADING:
-                        msg += f"\n<b>📥 Downloaded:</b> {get_readable_file_size(download.processed_bytes())}<b>\n⚙️ ᴇɴɢɪɴᴇ: ᴀʀɪᴀ𝟸\n💾 Size</b>: {download.size()}"
+                        msg += f"\n<b>📥 Downloaded:</b> {get_readable_file_size(download.processed_bytes())}<b>\n💾 Size</b>: {download.size()}"
                     elif download.status() == MirrorStatus.STATUS_CLONING:
                         msg += f"\n<b>♻️ Cloned:</b> {get_readable_file_size(download.processed_bytes())}<b>\n⚙️ ᴇɴɢɪɴᴇ: ʀᴄʟᴏɴᴇ\n💾 Size</b>: {download.size()}"
                     else:
@@ -135,7 +135,7 @@ def get_readable_message():
                     # if hasattr(download, 'is_torrent'):
                     try:
                         msg += f"\n<b>🌱:</b> {download.aria_download().num_seeders}" \
-                            f" | <b>🌏:</b> {download.aria_download().connections}\n"
+                            f" | <b>🌏:</b> {download.aria_download().connections}"
                     except:
                         pass
                     msg += f'\n<b>👥 User:</b> <b>{download.message.from_user.first_name}</b>\n<b>⚠️ Warn:</b><code>/warn {download.message.from_user.id}</code>'
