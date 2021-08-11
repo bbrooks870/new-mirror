@@ -127,21 +127,24 @@ def get_readable_message():
                     if download.status() == MirrorStatus.STATUS_DOWNLOADING:
                         msg += f"\n<b>📥 Downloaded:</b> {get_readable_file_size(download.processed_bytes())}<b>\n💾 Size</b>: {download.size()}"
                     elif download.status() == MirrorStatus.STATUS_CLONING:
-                        msg += f"\n<b>♻️ Cloned:</b> {get_readable_file_size(download.processed_bytes())}<b>\n⚙️ ᴇɴɢɪɴᴇ: ʀᴄʟᴏɴᴇ\n💾 Size</b>: {download.size()}"
+                        msg += f"\n<b>♻️ Cloned:</b> {get_readable_file_size(download.processed_bytes())}<b>\n<b>⚙️ Engine: ʀᴄʟᴏɴᴇ</b>\n💾 Size</b>: {download.size()}"
                     else:
-                        msg += f"\n<b>📤 Uploaded:</b> {get_readable_file_size(download.processed_bytes())}<b>\n⚙️ ᴇɴɢɪɴᴇ: ʀᴄʟᴏɴᴇ\n💾 Size</b>: {download.size()}"
+                        msg += f"\n<b>📤 Uploaded:</b> {get_readable_file_size(download.processed_bytes())}<b>\n<b>⚙️ Engine: ʀᴄʟᴏɴᴇ</b>\n💾 Size</b>: {download.size()}"
                     msg += f"\n<b>⚡ Speed:</b> {download.speed()}" \
                             f"\n<b>⏲️ ETA:</b> {download.eta()} "
                     # if hasattr(download, 'is_torrent'):
                     try:
-                        msg += f"\n<b>🌱:</b> {download.aria_download().num_seeders}" \
+                        msg += f"\n<b>📶 Connection:</b> {download.aria_download().connections}"
+                    except:
+                        pass
+                    msg += f"\n<b>🌱:</b> {download.aria_download().num_seeders}" \
                             f" | <b>🌏:</b> {download.aria_download().connections}"
                     except:
                         pass
                     msg += f'\n<b>👥 User:</b> <b>{download.message.from_user.first_name}</b>\n<b>⚠️ Warn:</b><code>/warn {download.message.from_user.id}</code>'
                     
                     try:
-                        msg += f"\n⚙️ ᴇɴɢɪɴᴇ: ǫʙɪᴛᴛᴏʀʀᴇɴᴛ\n<b>🌱:</b> {download.torrent_info().num_seeds}" \
+                        msg += f"\n<b>⚙️ Engine: ǫʙɪᴛᴛᴏʀʀᴇɴᴛ</b>\n<b>🌱:</b> {download.torrent_info().num_seeds}" \
                             f" | <b>🌏:</b> {download.torrent_info().num_leechs}"
                     except:
                         pass
