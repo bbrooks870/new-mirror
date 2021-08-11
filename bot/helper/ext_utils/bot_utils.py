@@ -134,16 +134,15 @@ def get_readable_message():
                             f"\n<b>⏲️ ETA:</b> {download.eta()} "
                     # if hasattr(download, 'is_torrent'):
                     try:
-                        msg += f"\n<b>📶 Connection:</b> {download.aria_download().connections}"
+                        msg += f'\n<b>📶 Connection:</b> {download.aria_download().connections}'
                     except:
                         pass
                     msg += f"\n<b>🌱:</b> {download.aria_download().num_seeders}" \
                             f" | <b>🌏:</b> {download.aria_download().connections}"
+                    try:
+                        msg += f'\n<b>👥 User:</b> <b>{download.message.from_user.first_name}</b>\n<b>⚠️ Warn:</b><code>/warn {download.message.from_user.id}</code>'
                     except:
                         pass
-                    msg += f'\n<b>👥 User:</b> <b>{download.message.from_user.first_name}</b>\n<b>⚠️ Warn:</b><code>/warn {download.message.from_user.id}</code>'
-                    
-                    try:
                         msg += f"\n<b>⚙️ Engine: ǫʙɪᴛᴛᴏʀʀᴇɴᴛ</b>\n<b>🌱:</b> {download.torrent_info().num_seeds}" \
                             f" | <b>🌏:</b> {download.torrent_info().num_leechs}"
                     except:
