@@ -138,12 +138,12 @@ def get_readable_message():
                     except:
                         pass
                     try:
-                    msg += f"\n<b>🌱:</b> {download.aria_download().num_seeders}" \
+                        msg += f"\n<b>🌱:</b> {download.aria_download().num_seeders}" \
                             f" | <b>🌏:</b> {download.aria_download().connections}"
                     except:
                         pass        
                     try:
-                    msg += f"\n<b>⚙️ Engine: ǫʙɪᴛᴛᴏʀʀᴇɴᴛ</b>\n<b>🌱:</b> {download.torrent_info().num_seeds}" \
+                        msg += f"\n<b>⚙️ Engine: ǫʙɪᴛᴛᴏʀʀᴇɴᴛ</b>\n<b>🌱:</b> {download.torrent_info().num_seeds}" \
                             f" | <b>🌏:</b> {download.torrent_info().num_leechs}"
                     except:
                         pass
