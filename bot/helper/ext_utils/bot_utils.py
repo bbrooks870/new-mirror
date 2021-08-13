@@ -138,8 +138,7 @@ def get_readable_message():
                     except:
                         pass    
                     try:   
-                    if is_file = {download.aria_download().num_seeders}
-                        if is_file is None:
+                    if {download.aria_download().connections} is None:
                         msg += f"\n<b>⚙️ Engine: Aria2</b>\n<b>📶:</b> {download.aria_download().connections}"
                     except:
                         pass
