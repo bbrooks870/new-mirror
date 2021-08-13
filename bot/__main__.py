@@ -4,7 +4,7 @@ import os
 import asyncio
 
 from pyrogram import idle
-from bot import app, SUPPORT_LINK, CHANNEL_LINK, AUTHORIZED_CHATS, TIMEZONE, RESTARTED_GROUP_ID
+from bot import app, SUPPORT_LINK, CHANNEL_LINK, AUTHORIZED_CHATS, TIMEZONE, RESTARTED_GROUP_ID, RESTARTED_GROUP_ID2
 from sys import executable
 from datetime import datetime
 import pytz
@@ -210,6 +210,20 @@ def main():
             )
         except BadRequest as e:
             LOGGER.warning(e.message)
+
+# Heroku restarted
+    GROUP_ID2 = f'{RESTARTED_GROUP_ID2}'
+    kie = datetime.now(pytz.timezone(f'{TIMEZONE}'))
+    jam = kie.strftime('%d/%m/%Y %I:%M%P')
+    if GROUP_ID2 is not None and isinstance(GROUP_ID2, str):        
+        try:
+            dispatcher.bot.sendMessage(f"{GROUP_ID2}", f"♻️ BOT GOT RESTARTED ♻️\n{jam}\n\nPlease Redownload again\n\n#restarted")
+        except Unauthorized:
+            LOGGER.warning(
+                "Bot isnt able to send message to support_chat, go and check!"
+            )
+        except BadRequest as e:
+            LOGGER.warning(e.message)            
             
     fs_utils.start_cleanup()
 
