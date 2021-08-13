@@ -178,6 +178,7 @@ try:
     ORDER_SORT = getConfig('ORDER_SORT')
     GD_BUTTON = getConfig('GD_BUTTON')
     RESTARTED_GROUP_ID = getConfig('RESTARTED_GROUP_ID')
+    RESTARTED_GROUP_ID2 = getConfig('RESTARTED_GROUP_ID2')
     
 except KeyError as e:
     LOGGER.error("One or more env variables missing!")
