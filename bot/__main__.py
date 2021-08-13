@@ -200,7 +200,7 @@ def main():
     # Heroku restarted
     GROUP_ID = f'{RESTARTED_GROUP_ID}'
     kie = datetime.now(pytz.timezone(f'{TIMEZONE}'))
-    jam = kie.strftime('%d/%m/%Y %I:%M%P')
+    jam = kie.strftime('\n\n📅 Date: %d/%m/%Y\n⏲️ Time: %I:%M%P\n🌏 Country: 🇲🇾')
     if GROUP_ID is not None and isinstance(GROUP_ID, str):        
         try:
             dispatcher.bot.sendMessage(f"{GROUP_ID}", f"♻️ BOT GOT RESTARTED ♻️\n{jam}\n\nPlease Redownload again\n\n#restarted")
@@ -214,7 +214,7 @@ def main():
 # Heroku restarted
     GROUP_ID2 = f'{RESTARTED_GROUP_ID2}'
     kie = datetime.now(pytz.timezone(f'{TIMEZONE}'))
-    jam = kie.strftime('%d/%m/%Y %I:%M%P')
+    jam = kie.strftime('\n\n📅 Date: %d/%m/%Y\n⏲️ Time: %I:%M%P\n🌏 Country: 🇲🇾')
     if GROUP_ID2 is not None and isinstance(GROUP_ID2, str):        
         try:
             dispatcher.bot.sendMessage(f"{GROUP_ID2}", f"♻️ BOT GOT RESTARTED ♻️\n{jam}\n\nPlease Redownload again\n\n#restarted")
