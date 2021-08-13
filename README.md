@@ -17,9 +17,10 @@
 
 **Slam Tg Mirror Bot** is a _multipurpose_ Telegram Bot writen in Python for mirroring files on the Internet to our beloved Google Drive.
 
-**Useful Tools**
+# Generator:    
 <p><a href="https://animerepublic74.xyz/IndexGenerator/"> <img src="https://img.shields.io/badge/Index%20Generator-orange?" width="200""/></a></p>
-<p><a href="https://heroku.com/deploy"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?" width="200""/></a></p>    
+<p><a href="https://heroku.com/deploy"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?" width="200""/></a></p>
+<p><a href="http://t.me/TokenPickle_Bot"> <img src="https://img.shields.io/badge/Token%20Pickle%20Generator-red?" width="200""/></a></p> 
 
 # Features supported:
 <details>
