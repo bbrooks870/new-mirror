@@ -3,15 +3,15 @@ from telegram.message import Message
 from telegram.update import Update
 import psutil, shutil
 import time
-from datetime import datetime
+from DateTime import DateTime
 import pytz
 import time
 from bot import AUTO_DELETE_MESSAGE_DURATION, LOGGER, bot, \
     status_reply_dict, status_reply_dict_lock, download_dict, download_dict_lock, botStartTime, Interval, DOWNLOAD_STATUS_UPDATE_INTERVAL
 from bot.helper.ext_utils.bot_utils import get_readable_message, get_readable_file_size, get_readable_time, MirrorStatus, setInterval
 from telegram.error import TimedOut, BadRequest
-utc_now = datetime.datetime.utcnow()
-bst_now = utc_now + datetime.timedelta(minutes=00, hours=8)
+utc_now = DateTime.DateTime.utcnow()
+bst_now = utc_now + DateTime.timedelta(minutes=00, hours=8)
 bst = bst_now.strftime("\nDate: %d/%m/%Y\nTime: %I:%M%P")
 
 
