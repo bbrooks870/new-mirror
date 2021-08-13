@@ -27,7 +27,7 @@ now=datetime.now(pytz.timezone(f'{TIMEZONE}'))
 
 def stats(update, context):
     currentTime = get_readable_time(time.time() - botStartTime)
-    current = now.strftime('%d/%m/%Y %I:%M:%S %p')
+    current = now.strftime('📅 Date: %d/%m/%Y\n⏲️ Time: %I:%M%P\n🌏 Country: 🇲🇾')
     total, used, free = shutil.disk_usage('.')
     total = get_readable_file_size(total)
     used = get_readable_file_size(used)
@@ -38,9 +38,9 @@ def stats(update, context):
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
     stats = f'<b>ℹ️ Bot Uptime:</b> {currentTime}\n' \
-            f'<b>▶️ Start Time:</b> {current}\n' \
-            f'<b>💿 Total Disk Space:</b> {total}\n' \
-            f'<b>📀 Used:</b> {used}  ' \
+            f'<b>▶️ Start Time:</b> {current}\n\n' \
+            f'<b>💿 Disk Space:</b> {total}\n' \
+            f'<b>📀 Used:</b> {used}\n' \
             f'<b>🕊️ Free:</b> {free}\n\n' \
             f'📊Data Usage📊\n<b>📤 Upload:</b> {sent}\n' \
             f'<b>📥 Download:</b> {recv}\n\n' \
