@@ -7,10 +7,12 @@ from datetime import datetime
 import pytz
 import time
 from bot import AUTO_DELETE_MESSAGE_DURATION, LOGGER, bot, \
-    status_reply_dict, status_reply_dict_lock, download_dict, download_dict_lock, botStartTime, Interval, DOWNLOAD_STATUS_UPDATE_INTERVAL, TIMEZONE
+    status_reply_dict, status_reply_dict_lock, download_dict, download_dict_lock, botStartTime, Interval, DOWNLOAD_STATUS_UPDATE_INTERVAL
 from bot.helper.ext_utils.bot_utils import get_readable_message, get_readable_file_size, get_readable_time, MirrorStatus, setInterval
 from telegram.error import TimedOut, BadRequest
-now=datetime.now(pytz.timezone(f'{TIMEZONE}'))
+utc_now = datetime.datetime.utcnow()
+bst_now = utc_now + datetime.timedelta(minutes=00, hours=8)
+bst = bst_now.strftime("\nDate: %d/%m/%Y\nTime: %I:%M%P")
 
 
 def sendMessage(text: str, bot, update: Update):
@@ -73,7 +75,6 @@ def delete_all_messages():
 def update_all_messages():
     total, used, free = shutil.disk_usage('.')
     free = get_readable_file_size(free)
-    current = now.strftime('\n📅 Date: %d/%m/%Y\n⏲️ Time: %I:%M%P\n🌏 Country: 🇲🇾')
     currentTime = get_readable_time(time.time() - botStartTime)
     msg, buttons = get_readable_message()
     if msg is None:
@@ -98,7 +99,7 @@ def update_all_messages():
                     uldl_bytes += float(speedy.split('M')[0]) * 1048576
         dlspeed = get_readable_file_size(dlspeed_bytes)
         ulspeed = get_readable_file_size(uldl_bytes)
-        msg += f"\n\n{current}\n\n<b>🔺 UL:</b> {ulspeed}ps\n<b>🔻 DL:</b> {dlspeed}ps\n"
+        msg += f"\n\n{bst}\n\n<b>🔺 UL:</b> {ulspeed}ps\n<b>🔻 DL:</b> {dlspeed}ps\n"
     with status_reply_dict_lock:
         for chat_id in list(status_reply_dict.keys()):
             if status_reply_dict[chat_id] and msg != status_reply_dict[chat_id].text:
@@ -117,7 +118,6 @@ def sendStatusMessage(msg, bot):
         Interval.append(setInterval(DOWNLOAD_STATUS_UPDATE_INTERVAL, update_all_messages))
     total, used, free = shutil.disk_usage('.')
     free = get_readable_file_size(free)
-    current = now.strftime('\n📅 Date: %d/%m/%Y\n⏲️ Time: %I:%M%P\n🌏 Country: 🇲🇾')
     currentTime = get_readable_time(time.time() - botStartTime)
     progress, buttons = get_readable_message()
     if progress is None:
@@ -142,7 +142,7 @@ def sendStatusMessage(msg, bot):
                     uldl_bytes += float(speedy.split('M')[0]) * 1048576
         dlspeed = get_readable_file_size(dlspeed_bytes)
         ulspeed = get_readable_file_size(uldl_bytes)
-        progress += f"\n\n{current}\n\n<b>🔺 UL:</b> {ulspeed}ps\n<b>🔻 DL:</b> {dlspeed}ps\n"
+        progress += f"\n\n{bst}\n\n<b>🔺 UL:</b> {ulspeed}ps\n<b>🔻 DL:</b> {dlspeed}ps\n"
     with status_reply_dict_lock:
         if msg.message.chat.id in list(status_reply_dict.keys()):
             try:
