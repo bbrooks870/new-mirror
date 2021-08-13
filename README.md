@@ -16,7 +16,10 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/breakdowns/mega-sdk-python?label=Docker%20Pull)
 
 **Slam Tg Mirror Bot** is a _multipurpose_ Telegram Bot writen in Python for mirroring files on the Internet to our beloved Google Drive.
+
+**Useful Tools**
 <p><a href="https://animerepublic74.xyz/IndexGenerator/"> <img src="https://img.shields.io/badge/Index%20Generator-orange?" width="200""/></a></p>
+<p><a href="https://heroku.com/deploy"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="200""/></a></p>    
 
 # Features supported:
 <details>
