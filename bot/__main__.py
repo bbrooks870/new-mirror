@@ -192,7 +192,11 @@ botcmds = [
         (f'{BotCommands.StatusCommand}','Get Mirror Status message'),
         (f'{BotCommands.StatsCommand}','Bot Usage Stats'),
         (f'{BotCommands.RestartCommand}','Restart the bot [owner/sudo only]'),
-        (f'{BotCommands.LogCommand}','Get the Bot Log [owner/sudo only]')
+        (f'{BotCommands.LogCommand}','Get the Bot Log [owner/sudo only]'),
+        (f'{BotCommands.AuthorizeCommand}','Auth chat [owner/sudo only]'),
+        (f'{BotCommands.UnAuthorizeCommand}','Unauth chat [owner/sudo only]'),
+        (f'{BotCommands.AddSudoCommand}','Add sudo [owner/sudo only]'),
+        (f'{BotCommands.RmSudoCommand}','Remove sudo [owner/sudo only]')
     ]
 
 
