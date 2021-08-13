@@ -138,8 +138,8 @@ def get_readable_message():
                     except:
                         pass
                     try:
-                        if {download.aria_download().connections} is None:
-                        msg += f"\n<b>⚙️ Engine: Aria2</b>\n<b>📶:</b> {download.aria_download().connections}"
+                        if f"{download.aria_download().connections}" is None:
+                            msg += f"\n<b>⚙️ Engine: Aria2</b>\n<b>📶:</b> {download.aria_download().connections}"
                     except:
                         pass
                     try:
