@@ -37,16 +37,16 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>Bot Uptime:</b> {currentTime}\n' \
-            f'<b>Start Time:</b> {current}\n' \
-            f'<b>Total Disk Space:</b> {total}\n' \
-            f'<b>Used:</b> {used}  ' \
-            f'<b>Free:</b> {free}\n\n' \
-            f'📊Data Usage📊\n<b>Upload:</b> {sent}\n' \
-            f'<b>Download:</b> {recv}\n\n' \
-            f'<b>CPU:</b> {cpuUsage}%\n' \
-            f'<b>RAM:</b> {memory}%\n' \
-            f'<b>DISK:</b> {disk}%'
+    stats = f'<b>ℹ️ Bot Uptime:</b> {currentTime}\n' \
+            f'<b>▶️ Start Time:</b> {current}\n' \
+            f'<b>💿 Total Disk Space:</b> {total}\n' \
+            f'<b>📀 Used:</b> {used}  ' \
+            f'<b>🕊️ Free:</b> {free}\n\n' \
+            f'📊Data Usage📊\n<b>📤 Upload:</b> {sent}\n' \
+            f'<b>📥 Download:</b> {recv}\n\n' \
+            f'<b>🖥️ CPU:</b> {cpuUsage}%\n' \
+            f'<b>🧮 RAM:</b> {memory}%\n' \
+            f'<b>💽 DISK:</b> {disk}%'
     sendMessage(stats, context.bot, update)
 
 
@@ -204,10 +204,10 @@ def main():
     # Heroku restarted
     GROUP_ID = f'{RESTARTED_GROUP_ID}'
     kie = datetime.now(pytz.timezone(f'{TIMEZONE}'))
-    jam = kie.strftime('\n\n📅 Date: %d/%m/%Y\n⏲️ Time: %I:%M%P\n🌏 Country: 🇲🇾')
+    jam = kie.strftime('\n📅 Date: %d/%m/%Y\n⏲️ Time: %I:%M%P\n🌏 Country: 🇲🇾')
     if GROUP_ID is not None and isinstance(GROUP_ID, str):        
         try:
-            dispatcher.bot.sendMessage(f"{GROUP_ID}", f"♻️ BOT GOT RESTARTED ♻️\n{jam}\n\nPlease Redownload again\n\n#restarted")
+            dispatcher.bot.sendMessage(f"{GROUP_ID}", f"♻️ <b>BOT GOT RESTARTED</b> ♻️\n{jam}\n\nPlease Redownload again\n\n#restarted")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
@@ -221,7 +221,7 @@ def main():
     jam = kie.strftime('\n\n📅 Date: %d/%m/%Y\n⏲️ Time: %I:%M%P\n🌏 Country: 🇲🇾')
     if GROUP_ID2 is not None and isinstance(GROUP_ID2, str):        
         try:
-            dispatcher.bot.sendMessage(f"{GROUP_ID2}", f"♻️ BOT GOT RESTARTED ♻️\n{jam}\n\nPlease Redownload again\n\n#restarted")
+            dispatcher.bot.sendMessage(f"{GROUP_ID2}", f"♻️ <b>BOT GOT RESTARTED</b> ♻️\n{jam}\n\nPlease Redownload again\n\n#restarted")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
