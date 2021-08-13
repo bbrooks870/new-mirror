@@ -432,6 +432,11 @@
         "value": "-100",
         "required": true
 	  },
+      "RESTARTED_GROUP_ID2": {
+        "description": "Give group id you want to notice restart",
+        "value": "-100",
+        "required": true
+	  },
       "WEEB_BOT": {
         "description": "anime stuff",
         "value": "weebhelp",
