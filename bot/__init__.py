@@ -179,6 +179,7 @@ try:
     GD_BUTTON = getConfig('GD_BUTTON')
     RESTARTED_GROUP_ID = getConfig('RESTARTED_GROUP_ID')
     RESTARTED_GROUP_ID2 = getConfig('RESTARTED_GROUP_ID2')
+    IMAGE_URL = getConfig('IMAGE_URL')
     
 except KeyError as e:
     LOGGER.error("One or more env variables missing! Exiting now")
