@@ -277,7 +277,7 @@ async def set_priority(request):
 @routes.get('/')
 async def homepage(request):
 
-    return web.Response(text="<h1>See slam-mirror-bot <a href=\"#\">@GitHub</a>By Slam</h1>",content_type="text/html")
+    return web.Response(text="<h1>See mirror-bot <a href=\"#\">@GitHub</a>MirrorBot</h1>",content_type="text/html")
 
 async def e404_middleware(app, handler):
 
@@ -286,11 +286,11 @@ async def e404_middleware(app, handler):
       try:
           response = await handler(request)
           if response.status == 404:
-              return web.Response(text="<h1>404: Page not found</h2><br><h3>Slam</h3>",content_type="text/html")
+              return web.Response(text="<h1>404: Page not found</h2><br><h3>MirrorBot</h3>",content_type="text/html")
           return response
       except web.HTTPException as ex:
           if ex.status == 404:
-              return web.Response(text="<h1>404: Page not found</h2><br><h3>Slam</h3>",content_type="text/html")
+              return web.Response(text="<h1>404: Page not found</h2><br><h3>MirrorBot</h3>",content_type="text/html")
           raise
   return middleware_handler
 

@@ -18,7 +18,7 @@ from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 from tenacity import *
 
-from bot import GD_BUTTON, INDEX_BUTTON, VIEW_BUTTON, TITLE_NAME, AUTHOR_NAME, AUTHOR_URL, GD_INFO, TELEGRAPH_INDEX, TELEGRAPH_DRIVE, SEARCH_VIEW_BUTTON, ORDER_SORT, INDEX_URL
+from bot import GD_BUTTON, INDEX_BUTTON, VIEW_BUTTON, TITLE_NAME, AUTHOR_NAME, AUTHOR_URL, GD_INFO, TELEGRAPH_INDEX, TELEGRAPH_DRIVE, SEARCH_VIEW_BUTTON, ORDER_SORT, INDEX_URL, IMAGE_URL
 from telegram import InlineKeyboardMarkup
 from bot.helper.telegram_helper import button_build
 from telegraph import Telegraph
@@ -511,8 +511,9 @@ class GoogleDriveHelper:
                 mime_type = get_mime_type(current_file_name)
                 file_name = current_file_name.split("/")[-1]
                 # current_file_name will have the full path
-                self.upload_file(current_file_name, file_name, mime_type, parent_id)
-                self.total_files += 1
+                if not file_name.endswith(".!qB"):
+                    self.upload_file(current_file_name, file_name, mime_type, parent_id)
+                    self.total_files += 1
                 new_id = parent_id
             if self.is_cancelled:
                 break
@@ -584,7 +585,7 @@ class GoogleDriveHelper:
                                                orderBy=f'{ORDER_SORT}').execute()
         content_count = 0
         if response["files"]:
-            msg += f'<h4>{len(response["files"])} Results: {fileName}</h4><br><br>'
+            msg += f'<img src="{IMAGE_URL}" /><h4>{len(response["files"])} Results: {fileName}</h4><br><br>'
             for file in response.get('files', []):
                 if file.get('mimeType') == "application/vnd.google-apps.folder":  # Detect Whether Current Entity is a Folder or File.
                     furl = f"https://drive.google.com/drive/folders/{file.get('id')}"
@@ -653,7 +654,7 @@ class GoogleDriveHelper:
             if self.num_of_path > 1:
                 self.edit_telegraph()
 
-            msg = f"<b>Found {len(response['files'])} results for <i>{fileName}</i></b>"
+            msg = f"<b>Found <code>{len(response['files'])}</code> results for <code>{fileName}</code></b>"
             buttons = button_build.ButtonMaker()   
             buttons.buildbutton(f"{SEARCH_VIEW_BUTTON}", f"https://telegra.ph/{self.path[0]}")
 
@@ -730,7 +731,7 @@ class GoogleDriveHelper:
             file_id = self.getIdFromUrl(link)
         except (KeyError,IndexError):
             msg = "Google Drive ID could not be found in the provided link"
-            return msg, "", ""
+            return msg, "", "", ""
         LOGGER.info(f"File ID: {file_id}")
         try:
             drive_file = self.__service.files().get(fileId=file_id, fields="id, name, mimeType, size",

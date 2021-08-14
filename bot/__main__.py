@@ -11,7 +11,7 @@ import pytz
 import time
 
 from telegram.error import BadRequest, Unauthorized
-from telegram import ParseMode
+from telegram import ParseMode, BotCommand
 from telegram.ext import CommandHandler
 from wserver import start_server_async
 from bot import bot, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, IS_VPS, SERVER_PORT

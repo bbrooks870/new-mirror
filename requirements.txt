@@ -31,6 +31,5 @@ telegraph
 tenacity
 TgCrypto
 torrentool
-youtube_dl
 urllib3
-DateTime
+youtube_dl

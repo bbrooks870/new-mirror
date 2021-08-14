@@ -1,5 +1,5 @@
-# Implement By - @anasty17 (https://github.com/breakdowns/slam-tg-mirror-bot/commit/0bfba523f095ab1dccad431d72561e0e002e7a59)
-# (c) https://github.com/breakdowns/slam-aria-mirror-bot
+# Implement By - @anasty17 (https://github.com/breakdowns/slam-mirrorbot/commit/0bfba523f095ab1dccad431d72561e0e002e7a59)
+# (c) https://github.com/breakdowns/slam-mirrorbot
 # All rights reserved
 
 import os
@@ -27,7 +27,7 @@ class qbittorrent:
 
 
     def __init__(self):
-        self.update_interval = 1.5
+        self.update_interval = 2
         self.meta_time = time.time()
 
     @new_thread
@@ -74,7 +74,7 @@ class qbittorrent:
             tor_info = tor_info[0]
             if BASE_URL is not None and qbitsel:
                 if not is_file and (tor_info.state == "checkingResumeData" or tor_info.state == "metaDL"):
-                    meta = sendMessage("Downloading Metadata...", listener.bot, listener.update)
+                    meta = sendMessage("Downloading Metadata...Please wait then you can select files or mirror torrent file if it have low seeders", listener.bot, listener.update)
                     while True:
                             tor_info = self.client.torrents_info(torrent_hashes=self.ext_hash)
                             if len(tor_info) == 0:
