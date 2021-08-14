@@ -74,7 +74,7 @@ class qbittorrent:
             tor_info = tor_info[0]
             if BASE_URL is not None and qbitsel:
                 if not is_file and (tor_info.state == "checkingResumeData" or tor_info.state == "metaDL"):
-                    meta = sendMessage("Downloading Metadata...Please wait then you can select files or mirror torrent file if it have low seeders", listener.bot, listener.update)
+                    meta = sendMessage("🔁 Downloading Metadata...", listener.bot, listener.update)
                     while True:
                             tor_info = self.client.torrents_info(torrent_hashes=self.ext_hash)
                             if len(tor_info) == 0:
