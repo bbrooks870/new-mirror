@@ -511,9 +511,8 @@ class GoogleDriveHelper:
                 mime_type = get_mime_type(current_file_name)
                 file_name = current_file_name.split("/")[-1]
                 # current_file_name will have the full path
-                if not file_name.endswith(".!qB"):
-                    self.upload_file(current_file_name, file_name, mime_type, parent_id)
-                    self.total_files += 1
+                self.upload_file(current_file_name, file_name, mime_type, parent_id)
+                self.total_files += 1
                 new_id = parent_id
             if self.is_cancelled:
                 break
@@ -585,7 +584,7 @@ class GoogleDriveHelper:
                                                orderBy=f'{ORDER_SORT}').execute()
         content_count = 0
         if response["files"]:
-            msg += f'<img src="{IMAGE_URL}" /><h4>{len(response["files"])} Results: {fileName}</h4><br><br>'
+            msg += f'<img src="https://telegra.ph/file/2757eec44b96e6be35e26.jpg" /><h4>{len(response["files"])} Results: {fileName}</h4><br><br>'
             for file in response.get('files', []):
                 if file.get('mimeType') == "application/vnd.google-apps.folder":  # Detect Whether Current Entity is a Folder or File.
                     furl = f"https://drive.google.com/drive/folders/{file.get('id')}"
