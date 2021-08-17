@@ -456,6 +456,11 @@
         "description": "Enter your Heroku app link to avoid the app from sleeping and to make it work with Torrent selection",
         "value": "https://yourappname.herokuapp.com",
         "required": true
+	  },
+      "ZIP_BOT": {
+        "description": "zip commands",
+        "value": "zip",
+        "required": true
       }	  
     },
     "addons": [

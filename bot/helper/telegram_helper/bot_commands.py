@@ -1,7 +1,7 @@
 from bot import START_BOT, MIRROR_BOT, UNZIP_BOT, TARMIR_BOT, CANCEL_BOT, CANCEL_ALL_BOT, LIST_BOT, STATUS_BOT
 from bot import USERS_BOT, AUTH_BOT, UNAUTH_BOT, ADDSUDO_BOT, RMSUDO_BOT, PING_BOT, RESTART_BOT, STATS_BOT, HELP_BOT
 from bot import LOG_BOT, SPEEDTEST_BOT, CLONE_BOT, COUNT_BOT, YTDL_BOT, TARYTDL_BOT, DELETE_BOT
-from bot import CONFIG_BOT, SHELL_BOT, UPDATE_BOT, EXEHELP_BOT, TSHELP_BOT
+from bot import CONFIG_BOT, SHELL_BOT, UPDATE_BOT, EXEHELP_BOT, TSHELP_BOT, ZIP_BOT
 
 class _BotCommands:
     def __init__(self):
@@ -9,6 +9,7 @@ class _BotCommands:
         self.MirrorCommand = f'{MIRROR_BOT}'
         self.UnzipMirrorCommand = f'{UNZIP_BOT}'
         self.TarMirrorCommand = f'{TARMIR_BOT}'
+        self.ZipMirrorCommand = f'{ZIP_BOT}'
         self.CancelMirror = f'{CANCEL_BOT}'
         self.CancelAllCommand = f'{CANCEL_ALL_BOT}'
         self.ListCommand = f'{LIST_BOT}'
